@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { useNovelStore } from '../store';
 import type { ColumnType } from '../types';
 
@@ -10,9 +11,11 @@ interface ModalProps {
   footer?: React.ReactNode;
 }
 
-function Modal({ open, onClose, title, children, footer }: ModalProps) {
+export function Modal({ open, onClose, title, children, footer }: ModalProps) {
   if (!open) return null;
-  return (
+  // Portal to body: fixed positioning breaks inside ancestors with
+  // backdrop-filter (the header), which become the containing block.
+  return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
@@ -24,7 +27,8 @@ function Modal({ open, onClose, title, children, footer }: ModalProps) {
         <div className="modal-body">{children}</div>
         {footer && <div className="modal-footer">{footer}</div>}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

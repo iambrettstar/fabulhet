@@ -11,6 +11,8 @@ import {
   ColumnsModal,
   DataMenu,
 } from './components/ManageModals';
+import { AccountMenu } from './components/AccountMenu';
+import { useCloudSync } from './sync';
 
 const VIEWS: { id: ViewMode; label: string; dot: string }[] = [
   { id: 'grid', label: 'Plot Grid', dot: 'grid' },
@@ -20,6 +22,7 @@ const VIEWS: { id: ViewMode; label: string; dot: string }[] = [
 ];
 
 export default function App() {
+  useCloudSync();
   const title = useNovelStore((s) => s.title);
   const setTitle = useNovelStore((s) => s.setTitle);
   const viewMode = useNovelStore((s) => s.viewMode);
@@ -54,7 +57,7 @@ export default function App() {
     <div className="app">
       <header className="header">
         <div className="logo">
-          <span className="logo-mark">Fabulhet</span>
+          <img className="logo-mark-img" src="/wordmark.svg" alt="Fabulhet" />
           <span className="logo-sub">plot craft</span>
         </div>
 
@@ -129,6 +132,8 @@ export default function App() {
             </button>
             <DataMenu open={dataOpen} onClose={() => setDataOpen(false)} />
           </div>
+
+          <AccountMenu />
         </div>
       </header>
 

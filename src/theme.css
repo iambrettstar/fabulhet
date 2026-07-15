@@ -1,0 +1,93 @@
+/* ─────────────────────────────────────────────────────────────
+   Fabulhet · "Writer's Desk" theme
+   Warm paper, typewriter ink, oxblood (syuzhet) & forest (fabula).
+
+   Apply: import AFTER index.css — in src/main.tsx:
+       import './index.css'
+       import './theme.css'
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surfaces — layered warm paper */
+  --bg-deep: #e7dcc2;      /* the desk */
+  --bg-base: #efe6d0;      /* the page */
+  --bg-elevated: #f5eedf;  /* cards & panels */
+  --bg-hover: #eae0c8;
+  --bg-active: #e0d3b6;
+  --border: #c9bb9c;
+  --border-subtle: #ddd1b4;
+
+  /* Ink */
+  --text: #2a231c;         /* typewriter ink */
+  --text-muted: #6e6151;
+  --text-faint: #9c8f7a;
+
+  /* Brand accents */
+  --accent: #7a2831;       /* oxblood */
+  --accent-hover: #8f323c;
+  --accent-soft: rgba(122, 40, 49, 0.12);
+
+  /* The dual timelines — the heart of the brand */
+  --fabula: #3e6350;       /* forest: the story as it happened */
+  --fabula-soft: rgba(62, 99, 80, 0.12);
+  --syuzhet: #7a2831;      /* oxblood: the story as it's told */
+  --syuzhet-soft: rgba(122, 40, 49, 0.12);
+
+  --danger: #a63a34;
+  --danger-soft: rgba(166, 58, 52, 0.12);
+  --success: #4e7d4e;
+
+  --shadow: 0 4px 24px rgba(58, 44, 26, 0.16);
+
+  /* Type — Literata & DM Sans stay; Courier Prime joins for
+     typewriter moments (wordmark, order numbers, labels) */
+  --font-mono: 'Courier Prime', 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Overrides for values hardcoded in index.css ────────────── */
+
+/* App backdrop: faint oxblood & forest washes on paper */
+.app {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(122, 40, 49, 0.05), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 100%, rgba(62, 99, 80, 0.05), transparent),
+    var(--bg-deep);
+}
+
+/* Frosted header on paper instead of char */
+.header {
+  background: rgba(242, 234, 217, 0.85);
+}
+
+/* Paper-coloured text on oxblood buttons */
+.btn-primary {
+  color: #f5eedf;
+}
+
+/* Sticky ruler backdrop */
+.h-ruler-wrap {
+  background: rgba(239, 230, 208, 0.94);
+}
+
+/* Softer, warmer modal dim */
+.modal-overlay {
+  background: rgba(42, 35, 28, 0.45);
+}
+
+/* Warm shadows in a light world */
+.modal {
+  box-shadow: 0 12px 40px rgba(58, 44, 26, 0.28);
+}
+
+/* ── Wordmark in the header ─────────────────────────────────── */
+
+.logo-mark-img {
+  display: block;
+  height: 20px;
+  width: auto;
+}
+
+/* Typewriter voice for the order numbers on both timelines */
+.order-box .value {
+  font-family: var(--font-mono);
+}
