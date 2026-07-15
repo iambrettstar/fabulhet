@@ -45,7 +45,7 @@ Without configuration the app is fully functional local-only. To enable accounts
 
 1. Create a free project at [supabase.com](https://supabase.com).
 2. In the dashboard, open **SQL Editor** and run the contents of [`supabase/schema.sql`](supabase/schema.sql) (creates the `novels` table with row-level security).
-3. Under **Authentication → URL Configuration**, set the **Site URL** to your deployed URL (e.g. `https://fabhulet.vercel.app`) and add `http://localhost:5173` to **Redirect URLs** for local dev.
+3. Under **Authentication → URL Configuration**, set the **Site URL** to your deployed URL (e.g. `https://fabulhet.vercel.app`) and add `http://localhost:5173` to **Redirect URLs** for local dev.
 4. Copy `.env.example` to `.env.local` and fill in the project URL and anon key from **Project Settings → API**.
 5. For production, set the same two env vars (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) in Vercel → Project → Settings → Environment Variables, then redeploy.
 

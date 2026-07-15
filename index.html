@@ -8,12 +8,28 @@
     <title>Fabulhet</title>
     <meta name="description" content="Interactive plot craft for novels — a plot grid with dual fabula and syuzhet timelines." />
     <meta name="theme-color" content="#f2ead9" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('fabulhet-theme');
+          var theme =
+            stored === 'dark' || stored === 'light'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      })();
+    </script>
 
     <meta property="og:title" content="Fabulhet" />
     <meta property="og:description" content="Interactive plot craft for novels. Drag scenes between the fabula and the syuzhet without losing either." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://fabhulet.vercel.app/" />
-    <meta property="og:image" content="https://fabhulet.vercel.app/og-image.png" />
+    <meta property="og:url" content="https://fabulhet.vercel.app/" />
+    <meta property="og:image" content="https://fabulhet.vercel.app/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

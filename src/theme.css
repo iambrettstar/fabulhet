@@ -7,7 +7,7 @@
        import './theme.css'
    ───────────────────────────────────────────────────────────── */
 
-:root {
+:root[data-theme='light'] {
   /* Surfaces — layered warm paper */
   --bg-deep: #e7dcc2;      /* the desk */
   --bg-base: #efe6d0;      /* the page */
@@ -45,9 +45,10 @@
 }
 
 /* ── Overrides for values hardcoded in index.css ────────────── */
+/* Scoped to the light theme so dark mode keeps index.css's own values. */
 
 /* App backdrop: faint oxblood & forest washes on paper */
-.app {
+:root[data-theme='light'] .app {
   background:
     radial-gradient(ellipse 80% 50% at 20% -10%, rgba(122, 40, 49, 0.05), transparent),
     radial-gradient(ellipse 60% 40% at 90% 100%, rgba(62, 99, 80, 0.05), transparent),
@@ -55,27 +56,27 @@
 }
 
 /* Frosted header on paper instead of char */
-.header {
+:root[data-theme='light'] .header {
   background: rgba(242, 234, 217, 0.85);
 }
 
 /* Paper-coloured text on oxblood buttons */
-.btn-primary {
+:root[data-theme='light'] .btn-primary {
   color: #f5eedf;
 }
 
 /* Sticky ruler backdrop */
-.h-ruler-wrap {
+:root[data-theme='light'] .h-ruler-wrap {
   background: rgba(239, 230, 208, 0.94);
 }
 
 /* Softer, warmer modal dim */
-.modal-overlay {
+:root[data-theme='light'] .modal-overlay {
   background: rgba(42, 35, 28, 0.45);
 }
 
 /* Warm shadows in a light world */
-.modal {
+:root[data-theme='light'] .modal {
   box-shadow: 0 12px 40px rgba(58, 44, 26, 0.28);
 }
 

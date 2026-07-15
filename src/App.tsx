@@ -14,6 +14,34 @@ import {
 import { AccountMenu } from './components/AccountMenu';
 import { useCloudSync } from './sync';
 
+type Theme = 'light' | 'dark';
+
+function getInitialTheme(): Theme {
+  return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+}
+
+function ThemeToggle() {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  const toggle = () => {
+    const next: Theme = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('fabulhet-theme', next);
+    setTheme(next);
+  };
+
+  return (
+    <button
+      className="btn-icon"
+      onClick={toggle}
+      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+      title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+    >
+      {theme === 'light' ? '🌙' : '☀️'}
+    </button>
+  );
+}
+
 const VIEWS: { id: ViewMode; label: string; dot: string }[] = [
   { id: 'grid', label: 'Plot Grid', dot: 'grid' },
   { id: 'fabula', label: 'Fabula', dot: 'fabula' },
@@ -132,6 +160,8 @@ export default function App() {
             </button>
             <DataMenu open={dataOpen} onClose={() => setDataOpen(false)} />
           </div>
+
+          <ThemeToggle />
 
           <AccountMenu />
         </div>
